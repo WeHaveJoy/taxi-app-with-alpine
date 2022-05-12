@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Taxi App</title>
+</head>
+<body>
+    <h1>Cape Town Taxi Rank</h1>
+    <br>
+
+    <div class="container">
+        <div x-data="{
+            price1: 0,
+            price2: 0,
+            price3: 0,
+            passenger1Qty: null,
+            passenger2Qty: null,
+            passenger3Qty: null,
+            leave1:null,
+            leave2:null,
+            leave3:null,
+            total() {
+                return this.price1 + this.price2 + this.price3
+            }
+        }">
+
+
+    <table>
+        <tr>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>Passenger action</th>
+            <th>Taxi trips</th>
+            <th>Price</th>
+            <th>Total price</th>
+          </tr>
+
+         <tr>
+          <td><strong>Cape Town</strong></td>
+          <td><strong>Bellville</strong></td>
+          <td> <button type="button" id="plus" @click="passenger1Qty++">+</button> 
+           <span x-text="passenger1Qty">0</span>
+            <button
+            x-bind:disabled="passenger1Qty <= 0" id="minus" @click="passenger1Qty--">-</button></td>
+            <td><button  x-bind:disabled="passenger1Qty < 13 "  @click="leave1 +=1, passenger1Qty -= 13, price1 += 20">Leave</button><span x-text="leave1">0</span> </td>
+           <td>R20</td>
+            <td><span class="totalPrice1"
+                x-html="price1 <= 0 ? 'R0.00' : 'R' + price1.toFixed(2)">0.00</span></td>
+            
+         </tr>
+
+            <tr>
+            <td><strong>Cape Town</strong></td>
+          <td><strong>Khayelitsha</strong></td>
+          <td> <button id="plus" @click="passenger2Qty++">+</button> 
+           <span x-text="passenger2Qty">0</span>
+            <button
+            x-bind:disabled="passenger2Qty <= 0" id="minus" @click="passenger2Qty--">-</button></td>
+            <td><button  x-bind:disabled="passenger2Qty < 13"  @click="leave2 +=1, passenger2Qty -= 13, price2 += 21">Leave</button><span x-text="leave2">0</span> </td>
+            <td>R21</td>
+            <td><span class="totalPrice1"
+                x-html="price1 <= 0 ? 'R0.00' : 'R' + price2.toFixed(2)">0.00</span></td>
+              </tr>
+
+        <tr>
+            <td><strong>Cape Town</strong></td>
+          <td><strong>Langa</strong></td>
+          <td> <button id="plus" @click="passenger3Qty++">+</button> 
+           <span x-text="passenger3Qty">0</span>
+            <button x-bind:disabled="passenger3Qty <= 0" id="minus" @click="passenger3Qty--">-</button></td>
+
+            <td><button  x-bind:disabled="passenger3Qty < 13 "  @click="leave3 +=1, passenger3Qty -= 13, price3 += 15">Leave</button><span x-text="leave3">0</span> </td>
+            <td>R15</td>
+            <td><span class="totalPrice1"
+                x-html="price1 <= 0 ? 'R0.00' : 'R' + price3.toFixed(2)">0.00</span></td>    
+                </tr>  
+    </table>
+        </div>
+</div>
+</body>
+</html>

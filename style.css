@@ -1,0 +1,25 @@
+body {
+    background: white;
+    font-family: arial, sans-serif;
+    background-color: black;
+    font-size: 0.75em;
+    color: yellow;
+  }
+
+  h1{
+      text-align: center;
+  }
+
+table, td, th {    
+    border: 2px solid yellow;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    padding: 15px;
+}
