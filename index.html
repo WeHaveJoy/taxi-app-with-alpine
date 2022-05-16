@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Taxi App</title>
@@ -93,15 +95,21 @@
                 </td> 
                 </tr>  
     </table>
+
+    <br>
+    <div>
+        <strong>Grand Total price: </strong> 
+        <span class="totalPrice" x-text="total() <= 0 ? 'R0.00' :total().toFixed(2)">0.00</span>
+    </div>
 <br>
     <div class="addTaxi">
-        <button class="newTaxi" @click="newTaxi" x-show="text">Add a new taxi</button>
+        <button class="" @click="" x-show="">Add a new route</button>
         <br>
-        <input x-show="newTaxi" type="text" placeholder="Departure">
+        <input x-show="" type="text" placeholder="Departure">
         <br>
-        <input x-show="newTaxi" type="text" placeholder="Destination">
+        <input x-show="" type="text" placeholder="Destination">
         <br>
-        <input x-show="newTaxi" type="text" placeholder="taxi fair">
+        <input x-show="" type="text" placeholder="taxi fair">
     </div>
         </div>
 </div>
