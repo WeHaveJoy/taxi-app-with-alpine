@@ -62,15 +62,27 @@
 
 
             addDestination(routes){
+                
+            let rName= document.querySelector('.destination').value;
+            let tPrice = document.querySelector('.myPrice').value;
+
+             if(rName && tPrice){
+                 let name = rName;
+                 let price = tPrice;
+
                 routes.push({
-                name: document.querySelector('.destination').value,
-                price: document.querySelector('.myPrice').value,
-                que: 0,
-                limit: 13,
-                leave: 0,
-                taxi: 3,
-                totalPerTrip: 0
-             })
+                    name,
+                    price,
+                    que: 0,
+                    limit: 13,
+                    leave: 0,
+                    taxi: 3,
+                    totalPerTrip: 0
+                 })
+            }
+            else{
+                return 'Please enter destination and the price'
+            }
             },
            grandTotal:$persist(0),
             numOfQues: 0,
