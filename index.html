@@ -17,7 +17,7 @@
 
     <div class="container">
         <div x-data="{
-            routes:[{
+            routes:$persist([{
                 name: 'Bellville',
                 que: 0,
                 limit: 13,
@@ -43,7 +43,7 @@
                 price: 15,
                 taxi: 3,
                 totalPerTrip: 0
-            }],
+            }]),
 
             tripcost(route){
               return Number(this.route.price)*13
@@ -54,17 +54,18 @@
                 route.totalPerTrip += cost
               },
 
-            addDestination(myRoute){
-                myRoute.push({
+            addDestination(routes){
+                routes.push({
                 name: document.querySelector('.destination').value,
                 price: document.querySelector('.myPrice').value,
                 que: 0,
                 limit: 13,
                 leave: 0,
-                taxi: 3
+                taxi: 3,
+                totalPerTrip: 0
              })
             },
-           grandTotal: 0
+           grandTotal:$persist(0) 
         }">
 
             <div>
@@ -76,8 +77,8 @@
                 <br>
                 <br>
                 <label for="">Price: </label>
-                <input class="myPrice" type="number">
-                <button @click="addDestination()">Add</button>
+                <input class="myPrice" type="number" step="0.01">
+                <button @click="addDestination(routes)">Add</button>
             </div>
             <br>
             <br>
@@ -108,8 +109,8 @@
                                     @click="leaveNow(route), route.leave +=1, route.que -= 13, route.taxi -=1, grandTotal += route.totalPerTrip">Leave</button>
                             </td>
                             <td><span x-text="route.leave">0</span></td>
-                            <td><span x-text="'R' + route.price.toFixed(2)"></span></td>
-                            <td><span class="" x-html="route.totalPerTrip"></span></td>
+                            <td><span x-text="'R' + route.price"></span></td>
+                            <td><span class="" x-html="'R' + route.totalPerTrip.toFixed(2)"></span></td>
                             <td class=""><span x-text="route.taxi"></span>
                             </td>
 
