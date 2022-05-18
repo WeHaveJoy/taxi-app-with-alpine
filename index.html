@@ -54,6 +54,13 @@
                 route.totalPerTrip += cost
               },
 
+              queFunc(route){
+                let queNum = Object.keys(route).length;
+                numOfQues = queNum;
+                return numOfQues;
+              },
+
+
             addDestination(routes){
                 routes.push({
                 name: document.querySelector('.destination').value,
@@ -65,7 +72,9 @@
                 totalPerTrip: 0
              })
             },
-           grandTotal:$persist(0) 
+           grandTotal:$persist(0),
+            numOfQues: 0,
+
         }">
 
             <div>
@@ -125,6 +134,12 @@
             <div>
                 <strong>Grand Total price made for a day: </strong>
                 <span class="" x-text="'R' + grandTotal.toFixed(2)"></span>
+            </div>
+
+            <br>
+            <div>
+                <strong>Number of ques: </strong>
+                <span class="" x-text="queFunc(routes)"></span>
             </div>
 
         </div>
